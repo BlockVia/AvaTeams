@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a post on AvaTimes.">
+    <title>Create Post - AvaTimes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Mobile Navigation (Bottom) -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon" id="nav-home"></span>
+            <span class="nav-label">Feed</span>
+        </a>
+        <a href="explore.html" class="nav-item">
+            <span class="nav-icon" id="nav-explore"></span>
+            <span class="nav-label">Explore</span>
+        </a>
+        <a href="create.html" class="nav-item nav-create">
+            <span class="nav-icon" id="nav-create"></span>
+        </a>
+        <a href="messages.html" class="nav-item">
+            <span class="nav-icon" id="nav-chat"></span>
+            <span class="nav-label">Chat</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <span class="nav-icon" id="nav-profile"></span>
+            <span class="nav-label">Profile</span>
+        </a>
+    </nav>
+
+    <!-- Top Header -->
+    <header class="top-header">
+        <a href="create.html" class="back-link">
+            <span class="header-icon" id="header-back"></span>
+        </a>
+        <h2 class="page-title">Create Post</h2>
+        <div style="width: 24px;"></div>
+    </header>
+
+    <!-- Create Post Container -->
+    <main class="create-post-container">
+        <div class="card create-card">
+            <div id="post-alert" class="alert" style="display: none;"></div>
+
+            <!-- Image Upload Area -->
+            <div class="image-upload-area" id="image-upload-area"
+                onclick="document.getElementById('image-input').click()">
+                <div class="image-preview" id="image-preview" style="display: none;">
+                    <img id="preview-img" src="" alt="Preview">
+                    <button class="remove-image" onclick="PostCreate.removeImage(event)">×</button>
+                </div>
+                <div class="upload-prompt" id="image-prompt">
+                    <span class="upload-icon" id="upload-icon"></span>
+                    <h3>Add Photo</h3>
+                    <p>Tap to select an image</p>
+                </div>
+                <input type="file" id="image-input" accept="image/*" style="display: none;"
+                    onchange="PostCreate.handleImageSelect(event)">
+            </div>
+
+            <!-- Post Form -->
+            <form id="post-form" onsubmit="PostCreate.handleSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label">Caption</label>
+                    <textarea id="post-caption" class="form-input" rows="4"
+                        placeholder="Write a caption... #avakin #look"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Location (Optional)</label>
+                    <input type="text" id="post-location" class="form-input" placeholder="📍 Add location...">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    📤 Share Post
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/create-post.js"></script>
+    <script>
+        // Inject Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('nav-home').innerHTML = Icons.home;
+            document.getElementById('nav-explore').innerHTML = Icons.eye;
+            document.getElementById('nav-create').innerHTML = Icons.create;
+            document.getElementById('nav-chat').innerHTML = Icons.chat;
+            document.getElementById('nav-profile').innerHTML = Icons.profile;
+
+            document.getElementById('header-back').innerHTML = Icons.back;
+            document.getElementById('upload-icon').innerHTML = Icons.camera;
+        });
+    </script>
+</body>
+
+</html>

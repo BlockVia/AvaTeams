@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AvaTimes - The social platform for Avakin Life">
+  <title>Feed - AvaTimes</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- Top Header -->
+  <header class="top-header">
+    <div class="logo">
+      <span class="logo-icon" id="header-logo"></span>
+      AvaTimes
+    </div>
+    <div class="header-actions">
+      <a href="search.html" class="header-icon" style="text-decoration: none;">
+        <span id="header-search"></span>
+      </a>
+      <button class="header-icon notification-btn" id="header-notif" onclick="UI.showToast('No new notifications')">
+        <!-- Icon injected by JS -->
+      </button>
+      <a href="messages.html" class="header-icon" style="text-decoration: none;">
+        <span id="header-chat"></span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Stories Bar - Dynamically populated by JS -->
+  <div class="stories-bar">
+    <!-- Stories will be injected by JS -->
+  </div>
+
+  <!-- Main Feed -->
+  <main id="feed-container" class="feed-container">
+    <!-- Posts injected by JS -->
+  </main>
+
+  <!-- Mobile Navigation (Bottom) -->
+  <nav class="mobile-nav">
+    <a href="index.html" class="nav-item active">
+      <span class="nav-icon" id="nav-home"></span>
+      <span class="nav-label">Feed</span>
+    </a>
+    <a href="explore.html" class="nav-item">
+      <span class="nav-icon" id="nav-explore"></span>
+      <span class="nav-label">Explore</span>
+    </a>
+    <a href="create.html" class="nav-item nav-create">
+      <span class="nav-icon" id="nav-create"></span>
+    </a>
+    <a href="messages.html" class="nav-item">
+      <span class="nav-icon" id="nav-chat"></span>
+      <span class="nav-label">Chat</span>
+    </a>
+    <a href="profile.html" class="nav-item">
+      <span class="nav-icon" id="nav-profile"></span>
+      <span class="nav-label">Profile</span>
+    </a>
+  </nav>
+
+  <!-- Auth Prompt (Hidden by default) -->
+  <div id="auth-buttons" style="display: none;">
+    <a href="login.html" class="btn btn-primary">Login</a>
+  </div>
+
+  <!-- Comments Modal -->
+  <div id="comments-modal" class="modal-overlay">
+    <div class="modal comments-modal">
+      <div class="modal-header">
+        <h3>Comments</h3>
+        <button class="modal-close" onclick="Feed.closeComments()">×</button>
+      </div>
+      <div class="modal-body">
+        <div id="comments-list" class="comments-list">
+          <!-- Comments will be injected here -->
+        </div>
+        <div class="comment-input-area">
+          <input type="text" id="comment-input" class="form-input" placeholder="Add a comment...">
+          <button class="btn btn-primary" onclick="Feed.addComment()">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story Viewer Modal -->
+  <div id="story-modal" class="modal-overlay story-modal-overlay">
+    <div class="story-viewer">
+      <div class="story-header">
+        <div class="story-user-info">
+          <div class="story-avatar" id="story-avatar"></div>
+          <span class="story-username" id="story-username"></span>
+          <span class="story-time" id="story-time"></span>
+        </div>
+        <button class="story-close" onclick="Feed.closeStoryViewer()">×</button>
+      </div>
+      <div class="story-content" id="story-content">
+        <!-- Story content here -->
+      </div>
+      <div class="story-progress">
+        <div class="story-progress-bar" id="story-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Detail Modal -->
+  <div id="post-modal" class="modal-overlay">
+    <div class="modal post-detail-modal">
+      <div class="modal-header">
+        <h3 id="modal-post-title">Post Details</h3>
+        <button class="modal-close" onclick="Feed.closePostModal()">×</button>
+      </div>
+      <div class="modal-body" id="modal-post-content">
+        <!-- Post details here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Detail Modal (Instagram-style) -->
+  <div id="post-detail-modal" class="modal-overlay post-detail-overlay">
+    <div class="post-detail-container">
+      <button class="post-detail-close" onclick="Profile.closePostDetail()">×</button>
+      <button class="post-nav-btn post-nav-prev" onclick="Profile.navigatePost(-1)">‹</button>
+      <button class="post-nav-btn post-nav-next" onclick="Profile.navigatePost(1)">›</button>
+      <div class="post-detail-content" id="post-detail-content">
+        <!-- Post content will be injected here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/icons.js"></script>
+  <script src="js/ui.js"></script> <!-- Added UI Utils -->
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/feed.js"></script>
+  <script>
+    // Inject Icons
+    document.addEventListener('DOMContentLoaded', () => {
+      // Header Icons (Fixed)
+      document.getElementById('header-logo').innerHTML = Icons.logo; // If Icons.logo exists, otherwise use Icons.aperture or similar
+      document.getElementById('header-search').innerHTML = Icons.eye;
+      document.getElementById('header-notif').innerHTML = Icons.heart;
+      document.getElementById('header-chat').innerHTML = Icons.chat;
+
+      // Nav Icons
+      document.getElementById('nav-home').innerHTML = Icons.home;
+      document.getElementById('nav-explore').innerHTML = Icons.eye;
+      document.getElementById('nav-create').innerHTML = Icons.create;
+      document.getElementById('nav-chat').innerHTML = Icons.chat;
+      document.getElementById('nav-profile').innerHTML = Icons.profile;
+    });
+  </script>
+</body>
+
+</html>

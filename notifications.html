@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Notifications - AvaTimes">
+    <title>Notifications - AvaTimes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <a href="index.html" class="back-link">
+            <span class="header-icon" id="header-back"></span>
+        </a>
+        <h2 class="page-title">Notifications</h2>
+        <div style="width: 24px;"></div>
+    </header>
+
+    <!-- Notifications Content -->
+    <main class="notifications-container">
+        <div id="notifications-list">
+            <!-- Notifications will be injected by JS -->
+        </div>
+    </main>
+
+    <!-- Mobile Navigation (Bottom) -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon" id="nav-home"></span>
+            <span class="nav-label">Feed</span>
+        </a>
+        <a href="explore.html" class="nav-item">
+            <span class="nav-icon" id="nav-explore"></span>
+            <span class="nav-label">Explore</span>
+        </a>
+        <a href="create.html" class="nav-item nav-create">
+            <span class="nav-icon" id="nav-create"></span>
+        </a>
+        <a href="messages.html" class="nav-item">
+            <span class="nav-icon" id="nav-chat"></span>
+            <span class="nav-label">Chat</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <span class="nav-icon" id="nav-profile"></span>
+            <span class="nav-label">Profile</span>
+        </a>
+    </nav>
+
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/notifications.js"></script>
+    <script>
+        // Inject Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('nav-home').innerHTML = Icons.home;
+            document.getElementById('nav-explore').innerHTML = Icons.eye;
+            document.getElementById('nav-create').innerHTML = Icons.create;
+            document.getElementById('nav-chat').innerHTML = Icons.chat;
+            document.getElementById('nav-profile').innerHTML = Icons.profile;
+            document.getElementById('header-back').innerHTML = Icons.back;
+        });
+    </script>
+</body>
+
+</html>

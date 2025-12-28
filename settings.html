@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Settings - AvaTimes">
+    <title>Settings - AvaTimes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <a href="profile.html" class="back-link">
+            <span class="header-icon" id="header-back"></span>
+        </a>
+        <h2 class="page-title">Settings</h2>
+        <div style="width: 24px;"></div>
+    </header>
+
+    <!-- Settings Content -->
+    <main class="settings-container">
+        <!-- Account Section -->
+        <div class="settings-section">
+            <h3 class="settings-section-title">Account</h3>
+            <div class="settings-item" onclick="Settings.editProfile()">
+                <div class="settings-item-left">
+                    <span class="settings-icon" id="icon-profile"></span>
+                    <span class="settings-label">Edit Profile</span>
+                </div>
+                <span class="settings-arrow" id="arrow-1"></span>
+            </div>
+            <div class="settings-item" onclick="Settings.changePassword()">
+                <div class="settings-item-left">
+                    <span class="settings-icon" id="icon-password"></span>
+                    <span class="settings-label">Change Password</span>
+                </div>
+                <span class="settings-arrow" id="arrow-2"></span>
+            </div>
+            <div class="settings-item" onclick="Settings.privacy()">
+                <div class="settings-item-left">
+                    <span class="settings-icon" id="icon-privacy"></span>
+                    <span class="settings-label">Privacy</span>
+                </div>
+                <span class="settings-arrow" id="arrow-3"></span>
+            </div>
+        </div>
+
+        <!-- Preferences Section -->
+        <div class="settings-section">
+            <h3 class="settings-section-title">Preferences</h3>
+            <div class="settings-item">
+                <div class="settings-item-left">
+                    <span class="settings-icon" id="icon-notif"></span>
+                    <span class="settings-label">Push Notifications</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="toggle-notifications" checked onchange="Settings.toggleNotifications()">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="settings-item">
+                <div class="settings-item-left">
+                    <span class="settings-icon" id="icon-dark"></span>
+                    <span class="settings-label">Dark Mode</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="toggle-darkmode" checked onchange="Settings.toggleDarkMode()">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="settings-item" onclick="Settings.changeLanguage()">
+                <div class="settings-item-left">
+                    <span class="settings-icon" id="icon-lang"></span>
+                    <span class="settings-label">Language</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="settings-value" id="current-lang">English</span>
+                    <span class="settings-arrow" id="arrow-4"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support Section -->
+        <div class="settings-section">
+            <h3 class="settings-section-title">Support</h3>
+            <div class="settings-item" onclick="Settings.help()">
+                <div class="settings-item-left">
+                    <span class="settings-icon" id="icon-help"></span>
+                    <span class="settings-label">Help Center</span>
+                </div>
+                <span class="settings-arrow" id="arrow-5"></span>
+            </div>
+            <div class="settings-item" onclick="Settings.report()">
+                <div class="settings-item-left">
+                    <span class="settings-icon" id="icon-report"></span>
+                    <span class="settings-label">Report a Problem</span>
+                </div>
+                <span class="settings-arrow" id="arrow-6"></span>
+            </div>
+            <div class="settings-item" onclick="Settings.about()">
+                <div class="settings-item-left">
+                    <span class="settings-icon" id="icon-about"></span>
+                    <span class="settings-label">About</span>
+                </div>
+                <span class="settings-arrow" id="arrow-7"></span>
+            </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="settings-section">
+            <div class="settings-item" onclick="Settings.logout()">
+                <div class="settings-item-left">
+                    <span class="settings-icon settings-danger" id="icon-logout"></span>
+                    <span class="settings-label settings-danger">Log Out</span>
+                </div>
+            </div>
+            <div class="settings-item" onclick="Settings.deleteAccount()">
+                <div class="settings-item-left">
+                    <span class="settings-icon settings-danger" id="icon-delete"></span>
+                    <span class="settings-label settings-danger">Delete Account</span>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 20px;">
+            AvaTimes v1.0.0
+        </p>
+    </main>
+
+    <!-- Mobile Navigation (Bottom) -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon" id="nav-home"></span>
+            <span class="nav-label">Feed</span>
+        </a>
+        <a href="explore.html" class="nav-item">
+            <span class="nav-icon" id="nav-explore"></span>
+            <span class="nav-label">Explore</span>
+        </a>
+        <a href="create.html" class="nav-item nav-create">
+            <span class="nav-icon" id="nav-create"></span>
+        </a>
+        <a href="messages.html" class="nav-item">
+            <span class="nav-icon" id="nav-chat"></span>
+            <span class="nav-label">Chat</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <span class="nav-icon" id="nav-profile"></span>
+            <span class="nav-label">Profile</span>
+        </a>
+    </nav>
+
+    <script src="js/icons.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/settings.js"></script>
+    <script>
+        // Inject Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navigation
+            document.getElementById('nav-home').innerHTML = Icons.home;
+            document.getElementById('nav-explore').innerHTML = Icons.eye;
+            document.getElementById('nav-create').innerHTML = Icons.create;
+            document.getElementById('nav-chat').innerHTML = Icons.chat;
+            document.getElementById('nav-profile').innerHTML = Icons.profile;
+            
+            // Header
+            document.getElementById('header-back').innerHTML = Icons.back;
+            
+            // Settings icons
+            document.getElementById('icon-profile').innerHTML = Icons.profile;
+            document.getElementById('icon-password').innerHTML = Icons.settings;
+            document.getElementById('icon-privacy').innerHTML = Icons.eye;
+            document.getElementById('icon-notif').innerHTML = Icons.heart;
+            document.getElementById('icon-dark').innerHTML = Icons.star;
+            document.getElementById('icon-lang').innerHTML = Icons.chat;
+            document.getElementById('icon-help').innerHTML = Icons.comment;
+            document.getElementById('icon-report').innerHTML = Icons.share;
+            document.getElementById('icon-about').innerHTML = Icons.logo;
+            document.getElementById('icon-logout').innerHTML = Icons.back;
+            document.getElementById('icon-delete').innerHTML = Icons.more;
+            
+            // Arrows
+            const arrows = document.querySelectorAll('.settings-arrow');
+            arrows.forEach(arrow => {
+                arrow.innerHTML = Icons.arrowRight;
+            });
+        });
+    </script>
+</body>
+
+</html>

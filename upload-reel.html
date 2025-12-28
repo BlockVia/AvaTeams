@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Upload a Reel to AvaTimes">
+    <title>Upload Reel - AvaTimes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Mobile Navigation (Bottom) -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon" id="nav-home"></span>
+            <span class="nav-label">Feed</span>
+        </a>
+        <a href="explore.html" class="nav-item">
+            <span class="nav-icon" id="nav-explore"></span>
+            <span class="nav-label">Explore</span>
+        </a>
+        <a href="create.html" class="nav-item nav-create">
+            <span class="nav-icon" id="nav-create"></span>
+        </a>
+        <a href="messages.html" class="nav-item">
+            <span class="nav-icon" id="nav-chat"></span>
+            <span class="nav-label">Chat</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <span class="nav-icon" id="nav-profile"></span>
+            <span class="nav-label">Profile</span>
+        </a>
+    </nav>
+
+    <!-- Top Header -->
+    <header class="top-header">
+        <a href="create.html" class="back-link">
+            <span class="header-icon" id="header-back"></span>
+        </a>
+        <h2 class="page-title">New Reel</h2>
+        <div style="width: 24px;"></div>
+    </header>
+
+    <!-- Upload Container -->
+    <main class="upload-container">
+        <div class="card upload-card">
+
+            <div id="upload-alert" class="alert" style="display: none;"></div>
+
+            <div class="upload-area" id="upload-area" onclick="document.getElementById('video-input').click()">
+                <div class="upload-preview" id="upload-preview" style="display: none;">
+                    <video id="video-preview" playsinline loop muted></video>
+                    <button class="remove-video" onclick="ReelUpload.removeVideo(event)">×</button>
+                </div>
+
+                <div class="upload-prompt" id="upload-prompt">
+                    <span class="upload-icon" id="upload-icon"></span>
+                    <h3>Select Video</h3>
+                    <p>Drag and drop or tap to browse</p>
+                    <p class="upload-hint">Best for 9:16 vertical videos</p>
+                </div>
+
+                <input type="file" id="video-input" accept="video/*" style="display: none;"
+                    onchange="ReelUpload.handleVideoSelect(event)">
+            </div>
+
+            <!-- Video Info (Hidden until file selected) -->
+            <div id="video-info" class="video-info" style="display: none;">
+                <div class="info-item">
+                    <span class="info-label">Duration</span>
+                    <span class="info-value" id="video-duration">--:--</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Size</span>
+                    <span class="info-value" id="video-size">-- MB</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Format</span>
+                    <span class="info-value" id="video-format">MP4</span>
+                </div>
+            </div>
+
+            <form id="reel-form">
+                <div class="form-group">
+                    <label class="form-label">Caption</label>
+                    <textarea id="reel-caption" class="form-input" rows="3"
+                        placeholder="Write a caption... #avakin #reels"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Music</label>
+                    <input type="text" id="reel-music" class="form-input" placeholder="🎵 Original Sound">
+                </div>
+
+                <!-- Progress Bar -->
+                <div id="upload-progress" class="upload-progress" style="display: none;">
+                    <div class="progress-label">
+                        <span>Uploading...</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+
+                <button type="submit" id="upload-btn" class="btn btn-primary" style="width: 100%;" disabled>
+                    Upload Reel
+                </button>
+            </form>
+        </div>
+
+        <div class="upload-tips">
+            <h4>💡 Pro Tips</h4>
+            <ul>
+                <li>Use vertical 9:16 videos for best results</li>
+                <li>Keep videos under 60 seconds</li>
+                <li>Add trending hashtags to get discovered</li>
+                <li>Good lighting makes a huge difference</li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/upload-reel.js"></script>
+    <script>
+        // Inject Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('nav-home').innerHTML = Icons.home;
+            document.getElementById('nav-explore').innerHTML = Icons.eye;
+            document.getElementById('nav-create').innerHTML = Icons.create;
+            document.getElementById('nav-chat').innerHTML = Icons.chat;
+            document.getElementById('nav-profile').innerHTML = Icons.profile;
+
+            document.getElementById('header-back').innerHTML = Icons.back;
+            document.getElementById('upload-icon').innerHTML = Icons.video;
+        });
+    </script>
+</body>
+
+</html>

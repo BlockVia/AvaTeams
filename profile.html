@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Profile - AvaTimes">
+    <title>Profile - AvaTimes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <div style="width: 24px;"></div> <!-- Spacer -->
+        <h2 class="page-title">@username</h2>
+        <div class="header-actions">
+            <a href="settings.html" class="header-icon" style="background:none; border:none; color:white; text-decoration: none;">
+                <span id="header-settings"></span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Profile Content -->
+    <main class="profile-content">
+        <div class="profile-info">
+            <div class="profile-avatar-large" id="profile-avatar">
+                <!-- Avatar injected here -->
+            </div>
+            <div class="profile-stats">
+                <div class="stat">
+                    <span class="stat-number" id="stat-posts">0</span>
+                    <span class="stat-label">Posts</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="stat-followers">0</span>
+                    <span class="stat-label">Followers</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="stat-following">0</span>
+                    <span class="stat-label">Following</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-details">
+            <h3 class="profile-display-name" id="display-name">Username</h3>
+            <p class="profile-bio" id="profile-bio">Bio goes here...</p>
+        </div>
+
+        <div class="profile-buttons">
+            <button class="btn btn-secondary edit-profile-btn" onclick="Profile.showEditModal()">Edit Profile</button>
+            <button class="btn btn-secondary" onclick="Profile.shareProfile()" style="flex:1;">
+                <span id="btn-share"></span> Share
+            </button>
+        </div>
+
+        <div class="profile-tabs">
+            <button class="tab-btn active" onclick="Profile.switchTab('posts')" data-tab="posts">
+                <span style="font-size: 1.2rem;">▦</span>
+            </button>
+            <button class="tab-btn" onclick="Profile.switchTab('looks')" data-tab="looks">
+                <span id="tab-looks" style="display:flex; justify-content:center;"></span>
+            </button>
+            <button class="tab-btn" onclick="Profile.switchTab('reels')" data-tab="reels">
+                <span id="tab-reels" style="display:flex; justify-content:center;"></span>
+            </button>
+        </div>
+
+        <div class="profile-grid" id="profile-grid">
+            <!-- Grid items injected by JS -->
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div id="edit-profile-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="modal-close" onclick="Profile.hideEditModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="event.preventDefault(); Profile.saveProfile();">
+                    <div class="form-group">
+                        <label class="form-label">Display Name</label>
+                        <input type="text" id="edit-display-name" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Bio</label>
+                        <textarea id="edit-bio" class="form-input" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Avatar Emoji/Icon</label>
+                        <input type="text" id="edit-avatar" class="form-input" placeholder="Paste an emoji">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Detail Modal (Instagram-style) -->
+    <div id="post-detail-modal" class="modal-overlay post-detail-overlay">
+        <div class="post-detail-container">
+            <button class="post-detail-close" onclick="Profile.closePostDetail()">×</button>
+            <button class="post-nav-btn post-nav-prev" onclick="Profile.navigatePost(-1)">‹</button>
+            <button class="post-nav-btn post-nav-next" onclick="Profile.navigatePost(1)">›</button>
+            <div class="post-detail-content" id="post-detail-content">
+                <!-- Post content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Prompt (Hidden) -->
+    <div id="login-prompt" style="display: none; text-align: center; padding: 40px;">
+        <h3>Please Login</h3>
+        <p>You need to be logged in to view your profile.</p>
+        <a href="login.html" class="btn btn-primary" style="margin-top: 20px;">Login</a>
+    </div>
+
+    <!-- Mobile Navigation (Bottom) -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon" id="nav-home"></span>
+            <span class="nav-label">Feed</span>
+        </a>
+        <a href="explore.html" class="nav-item">
+            <span class="nav-icon" id="nav-explore"></span>
+            <span class="nav-label">Explore</span>
+        </a>
+        <a href="create.html" class="nav-item nav-create">
+            <span class="nav-icon" id="nav-create"></span>
+        </a>
+        <a href="messages.html" class="nav-item">
+            <span class="nav-icon" id="nav-chat"></span>
+            <span class="nav-label">Chat</span>
+        </a>
+        <a href="profile.html" class="nav-item active">
+            <span class="nav-icon" id="nav-profile"></span>
+            <span class="nav-label">Profile</span>
+        </a>
+    </nav>
+
+    <script src="js/icons.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+    <script>
+        // Inject Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('nav-home').innerHTML = Icons.home;
+            document.getElementById('nav-explore').innerHTML = Icons.eye;
+            document.getElementById('nav-create').innerHTML = Icons.create;
+            document.getElementById('nav-chat').innerHTML = Icons.chat;
+            document.getElementById('nav-profile').innerHTML = Icons.profile;
+
+            document.getElementById('header-settings').innerHTML = Icons.settings;
+            document.getElementById('tab-looks').innerHTML = Icons.mask;
+            document.getElementById('tab-reels').innerHTML = Icons.video;
+            
+            // Share button icon
+            const shareBtn = document.getElementById('btn-share');
+            if (shareBtn) shareBtn.innerHTML = Icons.share;
+        });
+    </script>
+</body>
+
+</html>

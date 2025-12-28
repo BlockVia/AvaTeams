@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chat on AvaTimes">
+    <title>Messages - AvaTimes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <a href="index.html" class="back-link">
+            <span class="header-icon" id="header-back"></span>
+        </a>
+        <h2 class="page-title">Messages</h2>
+        <div class="header-actions">
+            <button class="header-icon" style="background:none; border:none; color:white;"
+                onclick="Messages.showCreateGroup()">
+                <span id="header-create"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Messages Container -->
+    <main class="messages-container">
+        <!-- Sidebar: Conversations -->
+        <aside class="conversations-sidebar">
+            <div class="conversations-header">
+                <input type="text" class="search-input" placeholder="Search...">
+            </div>
+            <div class="conversation-list">
+                <!-- Conversations injected by JS -->
+            </div>
+        </aside>
+
+        <!-- Chat Area -->
+        <section id="chat-area" class="chat-area">
+            <div class="chat-header">
+                <button class="back-btn" onclick="Messages.closeChat()">←</button>
+                <div class="chat-user">
+                    <!-- User info injected here -->
+                </div>
+                <button class="header-icon" style="background:none; border:none; color:white;">
+                    <span id="chat-settings"></span>
+                </button>
+            </div>
+
+            <div id="chat-messages" class="chat-messages">
+                <!-- Messages injected here -->
+            </div>
+
+            <div class="chat-input">
+                <button class="header-icon"
+                    style="background:none; border:none; color:var(--text-muted); padding: 0 10px;">
+                    <span id="chat-image"></span>
+                </button>
+                <input type="text" id="message-input" placeholder="Message..."
+                    onkeypress="Messages.handleKeyPress(event)">
+                <button class="send-btn" onclick="Messages.sendMessage()">
+                    <span id="chat-send"></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Empty State -->
+        <div id="chat-empty" class="chat-empty">
+            <div style="text-align: center;">
+                <span class="icon" id="empty-icon"
+                    style="width: 64px; height: 64px; color: var(--text-muted); display: inline-block;"></span>
+                <h3>Your Messages</h3>
+                <p style="color: var(--text-muted);">Send private photos and messages to a friend or group.</p>
+                <button class="btn btn-primary" onclick="Messages.showNewChat()" style="margin-top: 15px;">Send
+                    Message</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create Group Modal -->
+    <div id="create-group-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>New Group</h3>
+                <button class="modal-close" onclick="Messages.hideCreateGroup()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Group Name</label>
+                    <input type="text" id="group-name" class="form-input" placeholder="e.g. Best Squad">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Select Members</label>
+                    <div class="members-list">
+                        <label class="member-checkbox">
+                            <input type="checkbox" value="AvaQueen">
+                            <span>AvaQueen</span>
+                        </label>
+                        <label class="member-checkbox">
+                            <input type="checkbox" value="NightKing">
+                            <span>NightKing</span>
+                        </label>
+                        <label class="member-checkbox">
+                            <input type="checkbox" value="SweetAva">
+                            <span>SweetAva</span>
+                        </label>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="Messages.createGroup()">Create
+                    Group</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation (Bottom) -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon" id="nav-home"></span>
+            <span class="nav-label">Feed</span>
+        </a>
+        <a href="explore.html" class="nav-item">
+            <span class="nav-icon" id="nav-explore"></span>
+            <span class="nav-label">Explore</span>
+        </a>
+        <a href="create.html" class="nav-item nav-create">
+            <span class="nav-icon" id="nav-create"></span>
+        </a>
+        <a href="messages.html" class="nav-item active">
+            <span class="nav-icon" id="nav-chat"></span>
+            <span class="nav-label">Chat</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <span class="nav-icon" id="nav-profile"></span>
+            <span class="nav-label">Profile</span>
+        </a>
+    </nav>
+
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/messages.js"></script>
+    <script>
+        // Inject Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            // Nav
+            document.getElementById('nav-home').innerHTML = Icons.home;
+            document.getElementById('nav-explore').innerHTML = Icons.eye;
+            document.getElementById('nav-create').innerHTML = Icons.create;
+            document.getElementById('nav-chat').innerHTML = Icons.chat;
+            document.getElementById('nav-profile').innerHTML = Icons.profile;
+
+            // Header & UI
+            document.getElementById('header-back').innerHTML = Icons.back;
+            document.getElementById('header-create').innerHTML = Icons.edit;
+            document.getElementById('chat-settings').innerHTML = Icons.settings;
+            document.getElementById('chat-image').innerHTML = Icons.image;
+            document.getElementById('chat-send').innerHTML = Icons.arrowRight;
+            document.getElementById('empty-icon').innerHTML = Icons.chat;
+        });
+    </script>
+</body>
+
+</html>

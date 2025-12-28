@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Share your Avakin Life character look on AvaTimes.">
+    <title>Share Look - AvaTimes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Mobile Navigation (Bottom) -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-item">
+            <span class="nav-icon" id="nav-home"></span>
+            <span class="nav-label">Feed</span>
+        </a>
+        <a href="explore.html" class="nav-item">
+            <span class="nav-icon" id="nav-explore"></span>
+            <span class="nav-label">Explore</span>
+        </a>
+        <a href="create.html" class="nav-item nav-create">
+            <span class="nav-icon" id="nav-create"></span>
+        </a>
+        <a href="messages.html" class="nav-item">
+            <span class="nav-icon" id="nav-chat"></span>
+            <span class="nav-label">Chat</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <span class="nav-icon" id="nav-profile"></span>
+            <span class="nav-label">Profile</span>
+        </a>
+    </nav>
+
+    <!-- Top Header -->
+    <header class="top-header">
+        <a href="create.html" class="back-link">
+            <span class="header-icon" id="header-back"></span>
+        </a>
+        <h2 class="page-title">Share Look</h2>
+        <div style="width: 24px;"></div>
+    </header>
+
+    <!-- Create Form -->
+    <main class="create-look-container">
+        <div class="card create-card">
+            <div id="create-alert" class="alert" style="display: none;"></div>
+
+            <form id="create-form">
+                <div class="form-group">
+                    <label class="form-label" for="post-title">Look Title *</label>
+                    <input type="text" id="post-title" class="form-input"
+                        placeholder="Give your look a creative name..." required>
+                </div>
+
+                <h3 style="margin: 20px 0 15px; color: var(--text-secondary); font-size: 1rem;">
+                    Click to add feature details
+                </h3>
+
+                <!-- Eyes Section -->
+                <div class="feature-accordion">
+                    <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-icon" id="icon-eyes"></span>
+                        <span class="accordion-title">Eyes</span>
+                        <span class="accordion-arrow">▶</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label class="form-label" for="feature-eyes">Eye Type</label>
+                            <input type="text" id="feature-eyes" class="form-input"
+                                placeholder="e.g. Crystal Blue Eyes v2">
+                        </div>
+                        <div class="sliders-grid">
+                            <div class="slider-group">
+                                <label class="slider-label">Width <span id="eyes-width-val">50</span></label>
+                                <input type="range" id="eyes-width" class="slider-input" min="0" max="100" value="50">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label">Height <span id="eyes-height-val">50</span></label>
+                                <input type="range" id="eyes-height" class="slider-input" min="0" max="100" value="50">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label">Scale <span id="eyes-scale-val">50</span></label>
+                                <input type="range" id="eyes-scale" class="slider-input" min="0" max="100" value="50">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label">Rotate <span id="eyes-rotate-val">50</span></label>
+                                <input type="range" id="eyes-rotate" class="slider-input" min="0" max="100" value="50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Head Section -->
+                <div class="feature-accordion">
+                    <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-icon" id="icon-head"></span>
+                        <span class="accordion-title">Head</span>
+                        <span class="accordion-arrow">▶</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label class="form-label" for="feature-head">Head Shape</label>
+                            <input type="text" id="feature-head" class="form-input" placeholder="e.g. Soft Oval Shape">
+                        </div>
+                        <div class="sliders-grid">
+                            <div class="slider-group">
+                                <label class="slider-label">Scale <span id="head-scale-val">50</span></label>
+                                <input type="range" id="head-scale" class="slider-input" min="0" max="100" value="50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skin Color Section -->
+                <div class="feature-accordion">
+                    <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-icon" id="icon-skin"></span>
+                        <span class="accordion-title">Skin Color</span>
+                        <span class="accordion-arrow">▶</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label class="form-label" for="feature-skin">Skin Type</label>
+                            <input type="text" id="feature-skin" class="form-input" placeholder="e.g. Warm Caramel">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eyebrows Section -->
+                <div class="feature-accordion">
+                    <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-icon" id="icon-brows"></span>
+                        <span class="accordion-title">Eyebrows</span>
+                        <span class="accordion-arrow">▶</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label class="form-label" for="feature-eyebrows">Eyebrow Type</label>
+                            <input type="text" id="feature-eyebrows" class="form-input"
+                                placeholder="e.g. Natural Arch Brown">
+                        </div>
+                        <div class="sliders-grid">
+                            <div class="slider-group">
+                                <label class="slider-label">Width <span id="eyebrows-width-val">50</span></label>
+                                <input type="range" id="eyebrows-width" class="slider-input" min="0" max="100"
+                                    value="50">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label">Height <span id="eyebrows-height-val">50</span></label>
+                                <input type="range" id="eyebrows-height" class="slider-input" min="0" max="100"
+                                    value="50">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label">Scale <span id="eyebrows-scale-val">50</span></label>
+                                <input type="range" id="eyebrows-scale" class="slider-input" min="0" max="100"
+                                    value="50">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label">Rotate <span id="eyebrows-rotate-val">50</span></label>
+                                <input type="range" id="eyebrows-rotate" class="slider-input" min="0" max="100"
+                                    value="50">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label">Thickness <span
+                                        id="eyebrows-thickness-val">50</span></label>
+                                <input type="range" id="eyebrows-thickness" class="slider-input" min="0" max="100"
+                                    value="50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mouth Section -->
+                <div class="feature-accordion">
+                    <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-icon" id="icon-mouth"></span>
+                        <span class="accordion-title">Mouth</span>
+                        <span class="accordion-arrow">▶</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label class="form-label" for="feature-mouth">Mouth Type</label>
+                            <input type="text" id="feature-mouth" class="form-input"
+                                placeholder="e.g. Glossy Rose Lips">
+                        </div>
+                        <div class="sliders-grid">
+                            <div class="slider-group">
+                                <label class="slider-label">Height <span id="mouth-height-val">50</span></label>
+                                <input type="range" id="mouth-height" class="slider-input" min="0" max="100" value="50">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label">Scale <span id="mouth-scale-val">50</span></label>
+                                <input type="range" id="mouth-scale" class="slider-input" min="0" max="100" value="50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ears Section -->
+                <div class="feature-accordion">
+                    <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-icon" id="icon-ears"></span>
+                        <span class="accordion-title">Ears</span>
+                        <span class="accordion-arrow">▶</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label class="form-label" for="feature-ears">Ear Type</label>
+                            <input type="text" id="feature-ears" class="form-input" placeholder="e.g. Normal Ears">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beard Section -->
+                <div class="feature-accordion">
+                    <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-icon" id="icon-beard"></span>
+                        <span class="accordion-title">Beard</span>
+                        <span class="accordion-arrow">▶</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label class="form-label" for="feature-beard">Beard Type</label>
+                            <input type="text" id="feature-beard" class="form-input"
+                                placeholder="e.g. Designer Stubble">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="beard-color">Beard Color</label>
+                            <input type="text" id="beard-color" class="form-input" placeholder="e.g. Dark Brown">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hair Section -->
+                <div class="feature-accordion">
+                    <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-icon" id="icon-hair"></span>
+                        <span class="accordion-title">Hair</span>
+                        <span class="accordion-arrow">▶</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label class="form-label" for="feature-hair">Hair Type</label>
+                            <input type="text" id="feature-hair" class="form-input"
+                                placeholder="e.g. Flowing Silver Waves">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contour Section -->
+                <div class="feature-accordion">
+                    <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-icon" id="icon-contour"></span>
+                        <span class="accordion-title">Contour</span>
+                        <span class="accordion-arrow">▶</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label class="form-label" for="feature-contour">Contour Type</label>
+                            <input type="text" id="feature-contour" class="form-input" placeholder="e.g. Soft Contour">
+                        </div>
+                        <div class="sliders-grid">
+                            <div class="slider-group">
+                                <label class="slider-label">Height <span id="contour-height-val">50</span></label>
+                                <input type="range" id="contour-height" class="slider-input" min="0" max="100"
+                                    value="50">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label">Scale <span id="contour-scale-val">50</span></label>
+                                <input type="range" id="contour-scale" class="slider-input" min="0" max="100"
+                                    value="50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                    🚀 Share Look
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/create.js"></script>
+    <script>
+        // Inject Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            // Nav
+            document.getElementById('nav-home').innerHTML = Icons.home;
+            document.getElementById('nav-explore').innerHTML = Icons.eye;
+            document.getElementById('nav-create').innerHTML = Icons.create;
+            document.getElementById('nav-chat').innerHTML = Icons.chat;
+            document.getElementById('nav-profile').innerHTML = Icons.profile;
+            document.getElementById('header-back').innerHTML = Icons.back;
+
+            // Accordions
+            document.getElementById('icon-eyes').innerHTML = Icons.eye;
+            document.getElementById('icon-head').innerHTML = Icons.head;
+            document.getElementById('icon-skin').innerHTML = Icons.palette;
+            document.getElementById('icon-brows').innerHTML = Icons.eye; // reusing eye or custom
+            document.getElementById('icon-mouth').innerHTML = Icons.smile;
+            document.getElementById('icon-ears').innerHTML = Icons.mic;
+            document.getElementById('icon-beard').innerHTML = Icons.star;
+            document.getElementById('icon-hair').innerHTML = Icons.scissors;
+            document.getElementById('icon-contour').innerHTML = Icons.feather;
+        });
+    </script>
+</body>
+
+</html>
